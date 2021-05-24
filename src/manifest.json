@@ -1,16 +1,27 @@
 {
-  "name": "Chrome Extension Webpack",
-  "options_page": "options.html",
-  "background": {
-    "page": "background.html"
-  },
-  "browser_action": {
-    "default_popup": "popup.html",
-    "default_icon": "icon-34.png"
-  },
-  "icons": {
-    "128": "icon-128.png"
-  },
-  "manifest_version": 2,
-  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
+    "name": "obj ext",
+    "description": "my ext",
+    "version": "0.1",
+    "manifest_version": 2,
+    "content_scripts": [
+        {
+            "matches": [
+                "https://www.youtube.com/watch?v=*"
+            ],
+            "js": ["content.js", "emoji-slider.js"]
+        }
+    ],
+    "background": {
+        "scripts": ["./background.js"]
+    },
+    "browser_action": {
+        "default_popup": "popup.html"
+    },
+    "permissions": [
+        "tabs",
+        "https://www.youtube.com/watch?v=*",
+        "https://www.raw.githubusercontent.com/",
+        "storage"
+    ],
+    "web_accessible_resources": ["images/icoon.svg", "icoon.svg"]
 }
